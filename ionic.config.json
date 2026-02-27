@@ -1,0 +1,7 @@
+{
+  "name": "restore-smart-ecobin-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
