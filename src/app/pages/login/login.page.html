@@ -1,0 +1,47 @@
+<ion-content class="ion-padding ion-text-center">
+  <div class="login-container">
+    
+    <div class="header-section">
+      <ion-icon name="leaf-outline" color="success" style="font-size: 64px;"></ion-icon>
+      <h1>Eco-Collections</h1>
+      <p>Log in to start recycling</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <ion-list lines="none">
+        <ion-item class="custom-input">
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-input 
+            formControlName="email" 
+            type="email" 
+            placeholder="Email Address">
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="custom-input">
+          <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+          <ion-input 
+            formControlName="password" 
+            type="password" 
+            placeholder="Password">
+          </ion-input>
+        </ion-item>
+      </ion-list>
+
+      <ion-button 
+        expand="block" 
+        type="submit" 
+        [disabled]="!loginForm.valid" 
+        class="ion-margin-top main-btn">
+        Login
+      </ion-button>
+    </form>
+
+    <div class="footer-links">
+      <p>Don't have an account?</p>
+      <ion-button fill="clear" routerLink="/register">
+        Join the Program
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

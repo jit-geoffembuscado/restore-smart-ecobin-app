@@ -436,7 +436,6 @@ CREATE TABLE machine_maintenance_audits (
   machine_id      BIGINT      NOT NULL,
   user_id         BIGINT      NOT NULL,
   date_time       TIMESTAMPTZ,
-  -- NOTE: renamed from number_of_times (was BOOLEAN — likely a data error); use INTEGER for count
   number_of_times INTEGER     DEFAULT 1,
   created_at      TIMESTAMPTZ,
   updated_at      TIMESTAMPTZ
@@ -2136,6 +2135,12 @@ CREATE POLICY "profiles_service_delete"
   TO service_role
   USING (true);
 
+-- Create an enum for roles (optional but recommended)
+CREATE TYPE user_role AS ENUM ('admin', 'manager', 'user');
+
+-- Add the role column to your existing profiles table
+ALTER TABLE public.profiles 
+ADD COLUMN role user_role DEFAULT 'user';
 
 -- =============================================================================
 -- Notes on columns intentionally excluded

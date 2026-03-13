@@ -1,0 +1,46 @@
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header-section {
+  margin-bottom: 40px;
+  h1 {
+    font-weight: 700;
+    margin-top: 10px;
+  }
+  p {
+    color: var(--ion-color-medium);
+  }
+}
+
+.custom-input {
+  background: var(--ion-color-light);
+  border-radius: 12px;
+  margin-bottom: 15px;
+  --padding-start: 15px;
+  
+  ion-icon {
+    margin-right: 10px;
+    color: var(--ion-color-primary);
+  }
+}
+
+.main-btn {
+  --border-radius: 12px;
+  height: 50px;
+  font-weight: 600;
+}
+
+.footer-links {
+  margin-top: 30px;
+  p {
+    font-size: 0.9rem;
+    color: var(--ion-color-medium);
+    margin-bottom: 0;
+  }
+}
