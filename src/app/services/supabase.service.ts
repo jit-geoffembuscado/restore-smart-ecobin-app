@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient, UserResponse } from '@supabase/supabase-js';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -18,7 +18,9 @@ export class SupabaseService {
 
   // Helper to get the current user's email for the display name
   getUserEmail() {
-    return this.supabase.auth.getUser().then(res => res.data.user?.email);
+    return this.supabase.auth
+      .getUser()
+      .then((res: UserResponse) => res.data.user?.email);
   }
 
   async signUp(email: string, password: string) {

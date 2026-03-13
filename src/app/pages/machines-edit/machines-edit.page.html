@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Edit Machine</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  @if (loading) {
+    <p>Loading machine...</p>
+  } @else {
+    <form [formGroup]="form" (ngSubmit)="updateMachine()" class="machine-form">
+      <ion-item>
+        <ion-label position="stacked">Code</ion-label>
+        <ion-input formControlName="code"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Title</ion-label>
+        <ion-input formControlName="title"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">QR Backdoor (7 chars)</ion-label>
+        <ion-input formControlName="qr_backdoor" maxlength="7"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Maintenance Incentive Limit</ion-label>
+        <ion-input type="number" formControlName="maintenance_incentive_limit"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Maintenance Start Time</ion-label>
+        <ion-input type="time" formControlName="maintenance_start_time"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Maintenance End Time</ion-label>
+        <ion-input type="time" formControlName="maintenance_end_time"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Active</ion-label>
+        <ion-checkbox slot="end" formControlName="active"></ion-checkbox>
+      </ion-item>
+
+      <ion-button expand="block" type="submit" [disabled]="saving">
+        {{ saving ? 'Saving...' : 'Update Machine' }}
+      </ion-button>
+    </form>
+  }
+</ion-content>

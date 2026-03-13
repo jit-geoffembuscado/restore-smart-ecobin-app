@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Machines</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-button routerLink="/machines-create">Create Machine</ion-button>
+
+  @if (loading) {
+    <div class="loading-container">
+      <ion-spinner></ion-spinner>
+    </div>
+  } @else {
+    <ion-list>
+      <ion-item class="table-header">
+        <ion-label class="code">Code</ion-label>
+        <ion-label class="title">Title</ion-label>
+        <ion-label class="status">Active</ion-label>
+        <ion-label class="actions">Actions</ion-label>
+      </ion-item>
+
+      @for (machine of machines; track machine.code) {
+        <ion-item>
+          <ion-label class="code">{{ machine.code }}</ion-label>
+          <ion-label class="title">{{ machine.title }}</ion-label>
+          <ion-label class="status">{{ machine.active ? 'Yes' : 'No' }}</ion-label>
+          <ion-label class="actions">
+            <ion-button size="small" fill="outline" (click)="goToEdit(machine.code)">
+              Edit
+            </ion-button>
+            <ion-button
+              size="small"
+              fill="outline"
+              color="danger"
+              (click)="deleteMachine(machine.code)"
+            >
+              Delete
+            </ion-button>
+          </ion-label>
+        </ion-item>
+      }
+    </ion-list>
+  }
+</ion-content>
