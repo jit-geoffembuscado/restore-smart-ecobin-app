@@ -1,0 +1,25 @@
+.loading-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+ion-item {
+  --inner-padding-end: 0;
+}
+
+.table-header {
+  font-weight: 700;
+}
+
+.code {
+  max-width: 110px;
+}
+
+.status {
+  max-width: 90px;
+}
+
+.actions {
+  min-width: 180px;
+}

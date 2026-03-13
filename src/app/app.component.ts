@@ -16,7 +16,7 @@ import {
 } from '@ionic/angular/standalone';
 import { filter } from 'rxjs';
 import { addIcons } from 'ionicons';
-import { homeOutline, homeSharp } from 'ionicons/icons';
+import { buildOutline, buildSharp, homeOutline, homeSharp } from 'ionicons/icons';
 
 @Component({
   selector: 'app-root',
@@ -42,10 +42,13 @@ import { homeOutline, homeSharp } from 'ionicons/icons';
 })
 export class AppComponent {
   showMenu = false;
-  public appPages = [{ title: 'Home Dashboard', url: '/home', icon: 'home' }];
+  public appPages = [
+    { title: 'Home Dashboard', url: '/home', icon: 'home' },
+    { title: 'Machines', url: '/machines-index', icon: 'build' },
+  ];
 
   constructor(private router: Router) {
-    addIcons({ homeOutline, homeSharp });
+    addIcons({ homeOutline, homeSharp, buildOutline, buildSharp });
     this.setMenuVisibility(this.router.url);
 
     this.router.events
@@ -54,6 +57,6 @@ export class AppComponent {
   }
 
   private setMenuVisibility(url: string): void {
-    this.showMenu = url.startsWith('/home');
+    this.showMenu = url.startsWith('/home') || url.startsWith('/machines');
   }
 }
